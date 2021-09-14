@@ -9,7 +9,7 @@ import java.util.Random;
 
 /**
  * Activity
- * @author Douglas Trofino
+ * @author Grupo_C
  * @version 1.0
  */
 public class Activity implements Data {

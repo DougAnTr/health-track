@@ -1,17 +1,39 @@
 package br.com.healthtrack;
 
 import br.com.healthtrack.models.ActivityModel;
+import br.com.healthtrack.models.PayingUserModel;
+import br.com.healthtrack.models.UserModel;
 import br.com.healthtrack.models.WeightModel;
 
 public class App {
     public static void main(String[] args) {
-        User user1 = new User();
+        UserModel userModel = new UserModel();
+        PayingUserModel payingUserModel = new PayingUserModel();
+        User user1 = new User(userModel, payingUserModel);
+        PayingUser payingUser = new PayingUser(payingUserModel);
         WeightModel weightModel = new WeightModel();
         Weight weight1 = new Weight(user1, weightModel);
         ActivityModel activityModel = new ActivityModel();
         Activity activity1 = new Activity(user1, activityModel);
 
         User doug = user1.register("Douglas", "douglas.trofino@outlook.com", "12345678");
+        User andreia = user1.register("andreia", "andreia", "12345678");
+
+
+        System.out.println("Usuários: ");
+        for(User u : userModel.list()){
+            System.out.println("Nome: " + u.getName());
+        }
+        System.out.println();
+
+        user1.signUp(andreia, "Básico");
+
+        System.out.println("Usuários pagantes: ");
+        for(User p : payingUserModel.list()){
+            System.out.println("Nome: " + p.getName());
+        }
+        System.out.println();
+
 
         weight1.register(65, doug.getId());
         weight1.register(64, doug.getId());

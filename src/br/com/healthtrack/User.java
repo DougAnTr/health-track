@@ -1,20 +1,25 @@
 package br.com.healthtrack;
 
+import br.com.healthtrack.models.PayingUserModel;
 import br.com.healthtrack.models.UserModel;
 
 import java.util.Random;
 
 /**
  * User
- * @author Douglas Trofino
- * @version 1.0
+ * @author Grupo_C
+ * @version 1.0.1
  */
 public class User {
-
     /**
      * Model de usuário
      */
-    private UserModel userModel;
+    protected UserModel userModel;
+
+    /**
+     * Model de usuário pagante
+     */
+    private PayingUserModel payingUserModel;
 
     /**
      * Identificador do usuário
@@ -36,8 +41,13 @@ public class User {
      */
     private String password;
 
-    public User() {
-        this.userModel = new UserModel();
+    public User(UserModel model, PayingUserModel payingUserModel) {
+        this.userModel = model;
+        this.payingUserModel = payingUserModel;
+    }
+
+    public User(UserModel model) {
+        this.userModel = model;
     }
 
     /**
@@ -140,5 +150,16 @@ public class User {
      */
     public User getUser(int id) {
         return this.userModel.getById(id);
+    }
+
+    /**
+     * Assinar um plano
+     * @param type tipo do plano
+     * @return boolean
+     */
+    public boolean signUp(User user, String type){
+        PayingUser newUser = new PayingUser(user.getId(), user.getName(), user.getEmail(), user.getPassword(), type, 10.5);
+        this.payingUserModel.add(newUser);
+        return true;
     }
 }

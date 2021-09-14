@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Simula interações com o banco
- * @author Douglas Trofino
+ * @author Grupo_C
  * @version 1.0
  */
 public class UserModel implements Model<User> {
