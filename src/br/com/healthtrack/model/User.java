@@ -1,7 +1,4 @@
-package br.com.healthtrack;
-
-import br.com.healthtrack.models.PayingUserModel;
-import br.com.healthtrack.models.UserModel;
+package br.com.healthtrack.model;
 
 import java.util.Random;
 
@@ -11,16 +8,6 @@ import java.util.Random;
  * @version 1.0.1
  */
 public class User {
-    /**
-     * Model de usuário
-     */
-    protected UserModel userModel;
-
-    /**
-     * Model de usuário pagante
-     */
-    private PayingUserModel payingUserModel;
-
     /**
      * Identificador do usuário
      */
@@ -40,15 +27,6 @@ public class User {
      * Senha do usuário
      */
     private String password;
-
-    public User(UserModel model, PayingUserModel payingUserModel) {
-        this.userModel = model;
-        this.payingUserModel = payingUserModel;
-    }
-
-    public User(UserModel model) {
-        this.userModel = model;
-    }
 
     /**
      * Cria um novo usuário
@@ -126,40 +104,5 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    /**
-     * Registra um novo usuário na plataforma
-     * @param name nome do usuário
-     * @param email e-mail do usuário
-     * @param password senha do usuário
-     * @return User
-     */
-    public User register(String name, String email, String password) {
-        int id = new Random().nextInt();
-        User newUser = new User(id, name, email, password);
-
-        this.userModel.add(newUser);
-        return newUser;
-    }
-
-    /**
-     * Busca um usuário pelo identificador
-     * @param id identificador do usuário
-     * @return User
-     */
-    public User getUser(int id) {
-        return this.userModel.getById(id);
-    }
-
-    /**
-     * Assinar um plano
-     * @param type tipo do plano
-     * @return boolean
-     */
-    public boolean signUp(User user, String type){
-        PayingUser newUser = new PayingUser(user.getId(), user.getName(), user.getEmail(), user.getPassword(), type, 10.5);
-        this.payingUserModel.add(newUser);
-        return true;
     }
 }
