@@ -30,29 +30,27 @@ public class Weight {
     private Date date;
 
     /**
-     * Instância de um usuário
-     */
-    private User user;
-
-    /**
-     *
-     * @param user instância de User
-     */
-    public Weight(User user) {
-        this.user = user;
-    }
-
-    /**
      * Cria um novo peso
-     * @param id identificador do peso
      * @param weight peso em quilogramas
      * @param userId identificador do usuário que registrou o peso
      */
-    public Weight(int id, double weight, int userId) {
-        this.id = id;
+    public Weight(double weight, int userId) {
         this.weight = weight;
         this.userId = userId;
         this.date = new Date();
+    }
+
+    /**
+     * @param id identificador do peso
+     * @param weight peso em quilogramas
+     * @param userId id do usuário
+     * @param date data de registro
+     */
+    public Weight(int id, double weight, int userId, Date date) {
+        this.id = id;
+        this.weight = weight;
+        this.userId = userId;
+        this.date = date;
     }
 
     /**
@@ -117,5 +115,15 @@ public class Weight {
      */
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Weight{" +
+                "id=" + id +
+                ", weight=" + weight +
+                ", userId=" + userId +
+                ", date=" + date +
+                '}';
     }
 }

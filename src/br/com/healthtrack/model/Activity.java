@@ -37,17 +37,30 @@ public class Activity {
 
     /**
      * Cria uma nova atividade
-     * @param id identificador da atividade
      * @param description descrição da atividade
      * @param time tempo de duração da atividade em minutos
      * @param userId identificador do usuário que realizou a tividade
      */
-    public Activity(int id, String description, int time, int userId) {
-        this.id = id;
+    public Activity(String description, int time, int userId) {
         this.description = description;
         this.time = time;
         this.userId = userId;
         this.date = new Date();
+    }
+
+    /**
+     * Cria uma nova atividade com id
+     * @param id identificação da atividade
+     * @param description descrição da atividade
+     * @param time tempo de duração da atividade em minutos
+     * @param userId identificador do usuário que realizou a tividade
+     */
+    public Activity(Integer id, String description, int time, int userId, Date date) {
+        this.id = id;
+        this.description = description;
+        this.time = time;
+        this.userId = userId;
+        this.date = date;
     }
 
     /**
@@ -86,7 +99,7 @@ public class Activity {
      *
      * @return time
      */
-    public long getTime() {
+    public int getTime() {
         return time;
     }
 
