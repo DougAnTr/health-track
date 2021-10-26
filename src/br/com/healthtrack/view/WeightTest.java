@@ -1,8 +1,6 @@
 package br.com.healthtrack.view;
 
-import br.com.healthtrack.dao.FoodDao;
 import br.com.healthtrack.dao.WeightDao;
-import br.com.healthtrack.model.Food;
 import br.com.healthtrack.model.Weight;
 
 public class WeightTest {
